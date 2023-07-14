@@ -4,6 +4,8 @@ HealthBot is a personal health assistant that uses your data to give helpful adv
 
 Interaction with HealthGPT happens through use of a large language model, such as ChatGPT, but this project is best used with a model running locally on your machine to ensure that your sensitive health data is kept private and not accessed by any third parties. The default LLM is [Falcon 7B instruct](https://huggingface.co/tiiuae/falcon-7b-instruct).
 
+If your machine has at least 85-100GB of memory you can run [Falcon 40B instruct](https://huggingface.co/tiiuae/falcon-40b-instruct)
+
 The first version of this project will only look at Apple Health data collected by an Apple Watch. Future iterations will include additional information such as nutrition, weather, and unstructured data such as personal journal entries.
 
 ## Setup
