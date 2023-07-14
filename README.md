@@ -1,15 +1,18 @@
-## HealthGPT
+## HealthBot
 
-HealthGPT is a personal health assistant that uses your data to give helpful advice and reflections. It analyzes your data to determine trends and can make recommendations for how you can improve your health and fitness.
+HealthBot is a personal health assistant that uses your data to give helpful advice and reflections. It analyzes your data to determine trends and can make recommendations for how you can improve your health and fitness.
 
-Interaction with HealthGPT happens through use of a large language model, such as ChatGPT, but this project is best used with a model running locally on your machine to ensure that your sensitive health data is kept private and not accessed by any third parties.
+Interaction with HealthGPT happens through use of a large language model, such as ChatGPT, but this project is best used with a model running locally on your machine to ensure that your sensitive health data is kept private and not accessed by any third parties. The default LLM is [Falcon 7B instruct](https://huggingface.co/tiiuae/falcon-7b-instruct).
 
 The first version of this project will only look at Apple Health data collected by an Apple Watch. Future iterations will include additional information such as nutrition, weather, and unstructured data such as personal journal entries.
 
 ## Setup
 
-`bitsandbytes` is a required dependency for running Falcon-8B on a GPU. It has an issue with locating the CUDA runtime in the Python virtual environment. We need to add this runtime to the PATH so `bitsandbytes` can find it. Here is how to do that:
+We are using Docker to simplify the dependency management required for this project.
 
-`sudo apt install mlocate` - this adds the `locate` command
-`export CUDA_RUNTIME=locate libcudart.so` to find the CUDA runtime
-`export PATH=$PATH:$CUDA_RUNTIME`
+Run these commands to create a docker image and then use the image to run a container.
+
+```
+docker build -t healthbot .
+docker run -p 5000:5000 --gpus all -it healthbot
+```
