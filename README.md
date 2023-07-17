@@ -10,11 +10,12 @@ The first version of this project will only look at Apple Health data collected 
 
 ## Setup
 
-We are using Docker to simplify the dependency management required for this project.
+We are using Docker to simplify the dependency management required for this project. 
 
 Run these commands to create a docker image and then use the image to run a container.
 
 ```
+sudo apt-get install nvidia-container-runtime
 docker build -t healthbot .
 docker run -p 5000:5000 --gpus all -it healthbot
 ```
