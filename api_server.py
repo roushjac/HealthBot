@@ -3,12 +3,14 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-model_id = "tiiuae/falcon-7b-instruct"
+# model_id = "tiiuae/falcon-7b-instruct"
+# model_id = "mosaicml/mpt-7b-instruct"
+model_id = "bigscience/bloom-3b"
 
 llm = HuggingFacePipeline.from_model_id(
     model_id=model_id,
     task="text-generation",
-    model_kwargs={"temperature": 0, "trust_remote_code": True, "load_in_8bit": True, "device_map": {"": 0}},
+    model_kwargs={"temperature": 0, "trust_remote_code": True, "device_map": "auto", "load_in_8bit": True},
     pipeline_kwargs={"max_length": 1024}
 )
 template = """Question: {question}
